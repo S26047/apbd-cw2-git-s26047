@@ -1,267 +1,266 @@
 apbd-cw2-git-s26047
 
 # System wypożyczalni sprzętu (C#)
-===
 
-# 
 
-# \## Opis projektu
 
-# 
+\## Opis projektu
 
-# Projekt przedstawia prostą aplikację konsolową napisaną w języku C#, która symuluje działanie uczelnianej wypożyczalni sprzętu.
 
-# System umożliwia dodawanie sprzętu i użytkowników, wypożyczanie oraz zwracanie sprzętu, a także generowanie podstawowych raportów.
 
-# 
+Projekt przedstawia prostą aplikację konsolową napisaną w języku C#, która symuluje działanie uczelnianej wypożyczalni sprzętu.
 
-# Celem projektu było nie tylko stworzenie działającej aplikacji, ale również zaprojektowanie jej w sposób zgodny z zasadami programowania obiektowego.
+System umożliwia dodawanie sprzętu i użytkowników, wypożyczanie oraz zwracanie sprzętu, a także generowanie podstawowych raportów.
 
-# 
 
-# \---
 
-# 
+Celem projektu było nie tylko stworzenie działającej aplikacji, ale również zaprojektowanie jej w sposób zgodny z zasadami programowania obiektowego.
 
-# \## Funkcjonalności
 
-# 
 
-# Aplikacja umożliwia:
+\---
 
-# 
 
-# \* dodawanie użytkowników (Student, Employee)
 
-# \* dodawanie sprzętu (Laptop, Projector, Camera)
+\## Funkcjonalności
 
-# \* wyświetlanie listy sprzętu
 
-# \* wyświetlanie dostępnego sprzętu
 
-# \* wypożyczanie sprzętu
+Aplikacja umożliwia:
 
-# \* zwrot sprzętu (z naliczeniem kary za opóźnienie)
 
-# \* sprawdzanie aktywnych wypożyczeń użytkownika
 
-# \* wyświetlanie przeterminowanych wypożyczeń
+\* dodawanie użytkowników (Student, Employee)
 
-# \* prosty raport stanu systemu
+\* dodawanie sprzętu (Laptop, Projector, Camera)
 
-# 
+\* wyświetlanie listy sprzętu
 
-# \---
+\* wyświetlanie dostępnego sprzętu
 
-# 
+\* wypożyczanie sprzętu
 
-# \## Struktura projektu
+\* zwrot sprzętu (z naliczeniem kary za opóźnienie)
 
-# 
+\* sprawdzanie aktywnych wypożyczeń użytkownika
 
-# Projekt został podzielony na kilka głównych części:
+\* wyświetlanie przeterminowanych wypożyczeń
 
-# 
+\* prosty raport stanu systemu
 
-# \### Models
 
-# 
 
-# Zawiera klasy domenowe:
+\---
 
-# 
 
-# \* `Equipment` (klasa bazowa)
 
-# \* `Laptop`, `Projector`, `Camera`
+\## Struktura projektu
 
-# \* `User` (klasa bazowa)
 
-# \* `Student`, `Employee`
 
-# \* `Loan`
+Projekt został podzielony na kilka głównych części:
 
-# 
 
-# Modele przechowują dane i nie zawierają logiki biznesowej.
 
-# 
+\### Models
 
-# \---
 
-# 
 
-# \### Services
+Zawiera klasy domenowe:
 
-# 
 
-# Zawiera klasę:
 
-# 
+\* `Equipment` (klasa bazowa)
 
-# \* `RentalService`
+\* `Laptop`, `Projector`, `Camera`
 
-# 
+\* `User` (klasa bazowa)
 
-# Odpowiada ona za całą logikę biznesową, m.in.:
+\* `Student`, `Employee`
 
-# 
+\* `Loan`
 
-# \* wypożyczanie sprzętu
 
-# \* sprawdzanie limitów użytkowników
 
-# \* naliczanie kar
+Modele przechowują dane i nie zawierają logiki biznesowej.
 
-# \* kontrolę dostępności sprzętu
 
-# 
 
-# \---
+\---
 
-# 
 
-# \### Program.cs
 
-# 
+\### Services
 
-# Zawiera scenariusz demonstracyjny pokazujący działanie systemu.
 
-# 
 
-# \---
+Zawiera klasę:
 
-# 
 
-# \## Decyzje projektowe
 
-# 
+\* `RentalService`
 
-# \### Podział odpowiedzialności
 
-# 
 
-# Zdecydowałem się rozdzielić:
+Odpowiada ona za całą logikę biznesową, m.in.:
 
-# 
 
-# \* modele (dane)
 
-# \* logikę biznesową (serwis)
+\* wypożyczanie sprzętu
 
-# \* warstwę uruchomieniową (Program.cs)
+\* sprawdzanie limitów użytkowników
 
-# 
+\* naliczanie kar
 
-# Dzięki temu kod jest bardziej czytelny i łatwiejszy do rozwijania.
+\* kontrolę dostępności sprzętu
 
-# 
 
-# \---
 
-# 
+\---
 
-# \### Dziedziczenie
 
-# 
 
-# Zastosowałem dziedziczenie w dwóch miejscach:
+\### Program.cs
 
-# 
 
-# \* `Equipment` → różne typy sprzętu
 
-# \* `User` → różne typy użytkowników
+Zawiera scenariusz demonstracyjny pokazujący działanie systemu.
 
-# 
 
-# Pozwoliło to uniknąć powielania kodu i uprościć model.
 
-# 
+\---
 
-# \---
 
-# 
 
-# \### Reguły biznesowe w jednym miejscu
+\## Decyzje projektowe
 
-# 
 
-# Logika taka jak:
 
-# 
+\### Podział odpowiedzialności
 
-# \* limity wypożyczeń
 
-# \* naliczanie kar
 
-# 
+Zdecydowałem się rozdzielić:
 
-# znajduje się w klasie `RentalService`, co ułatwia jej modyfikację i zmniejsza coupling.
 
-# 
 
-# \---
+\* modele (dane)
 
-# 
+\* logikę biznesową (serwis)
 
-# \### Kohezja i coupling
+\* warstwę uruchomieniową (Program.cs)
 
-# 
 
-# Starałem się:
 
-# 
+Dzięki temu kod jest bardziej czytelny i łatwiejszy do rozwijania.
 
-# \* utrzymać wysoką kohezję (każda klasa ma jedną odpowiedzialność)
 
-# \* ograniczyć coupling (klasy nie są ze sobą nadmiernie powiązane)
 
-# 
+\---
 
-# \---
 
-# 
 
-# \## Uruchomienie
+\### Dziedziczenie
 
-# 
 
-# 1\. Otworzyć projekt w Rider / Visual Studio
 
-# 2\. Zbudować projekt
+Zastosowałem dziedziczenie w dwóch miejscach:
 
-# 3\. Uruchomić `Program.cs`
 
-# 
 
-# \---
+\* `Equipment` → różne typy sprzętu
 
-# 
+\* `User` → różne typy użytkowników
 
-# \## Możliwe rozszerzenia
 
-# 
 
-# \* zapis danych do pliku JSON
+Pozwoliło to uniknąć powielania kodu i uprościć model.
 
-# \* interaktywne menu w konsoli
 
-# \* bardziej rozbudowane raporty
 
-# \* dodanie statusów sprzętu (np. uszkodzony)
+\---
 
-# 
 
-# \---
 
-# 
+\### Reguły biznesowe w jednym miejscu
 
-# \## Autor
 
-# 
 
-# Projekt wykonany w ramach zajęć APBD.
+Logika taka jak:
+
+
+
+\* limity wypożyczeń
+
+\* naliczanie kar
+
+
+
+znajduje się w klasie `RentalService`, co ułatwia jej modyfikację i zmniejsza coupling.
+
+
+
+\---
+
+
+
+\### Kohezja i coupling
+
+
+
+Starałem się:
+
+
+
+\* utrzymać wysoką kohezję (każda klasa ma jedną odpowiedzialność)
+
+\* ograniczyć coupling (klasy nie są ze sobą nadmiernie powiązane)
+
+
+
+\---
+
+
+
+\## Uruchomienie
+
+
+
+1\. Otworzyć projekt w Rider / Visual Studio
+
+2\. Zbudować projekt
+
+3\. Uruchomić `Program.cs`
+
+
+
+\---
+
+
+
+\## Możliwe rozszerzenia
+
+
+
+\* zapis danych do pliku JSON
+
+\* interaktywne menu w konsoli
+
+\* bardziej rozbudowane raporty
+
+\* dodanie statusów sprzętu (np. uszkodzony)
+
+
+
+\---
+
+
+
+\## Autor
+
+
+
+Projekt wykonany w ramach zajęć APBD.
 
 
 
